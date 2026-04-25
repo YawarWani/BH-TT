@@ -547,9 +547,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroSection) {
         // You can add your mobile-only hero images here!
         const mobileImages = [
-            'hero_images/mobile1.jpg',
-            'hero_images/mobile2.jpg',
-            'hero_images/mobile3.jpg'
+            'hero_images/1.jpg',
+            'hero_images/2.jpg',
+            'hero_images/3.jpg',
+            'hero_images/4.jpg'
         ];
         
         let currentBgIndex = 0;
