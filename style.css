@@ -1433,15 +1433,6 @@ img {
     .whatsapp-sticky-btn:hover {
         transform: none;
     }
-
-    .wa-text {
-        display: none;
-    }
-
-    .whatsapp-sticky-btn i {
-        margin-right: 0;
-        font-size: 1.8rem;
-    }
     
     .hero-btns .btn-whatsapp {
         display: none !important;
