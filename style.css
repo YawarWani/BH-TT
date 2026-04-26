@@ -34,8 +34,10 @@
     box-sizing: border-box;
 }
 
-html {
+html, body {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -248,7 +250,7 @@ img {
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -261,6 +263,7 @@ img {
     font-weight: 700;
     color: var(--dark);
     text-decoration: none;
+    margin-right: auto;
 }
 
 .navbar.scrolled .logo {
@@ -277,6 +280,8 @@ img {
     display: flex;
     gap: 15px;
     align-items: center;
+    order: 3;
+    margin-left: 20px;
 }
 
 .header-socials a {
@@ -445,6 +450,33 @@ img {
     display: flex;
     gap: 20px;
     justify-content: center;
+}
+
+.hero-btns .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border: none;
+    box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
+    transition: all 0.3s ease;
+}
+
+.hero-btns .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 118, 110, 0.6);
+}
+
+.hero-btns .btn-outline {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.hero-btns .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transform: translateY(-3px);
 }
 
 /* ==========================================================================
@@ -1234,14 +1266,15 @@ img {
     .nav-menu {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
+        transform: translateX(100%);
         width: 70%;
         height: 100vh;
         background: var(--white);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: 0.5s;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         padding: 0;
         z-index: 1000;
@@ -1249,7 +1282,7 @@ img {
     }
 
     .nav-menu.active {
-        right: 0;
+        transform: translateX(0);
     }
 
     .nav-link {
@@ -1292,6 +1325,27 @@ img {
 
     .hero-btns {
         flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-btns > .btn-primary {
+        width: 100%;
+    }
+
+    .hero-sub-btns {
+        width: 100%;
+        display: flex;
+        gap: 15px;
+    }
+
+    .hero-sub-btns .btn {
+        flex: 1;
+        padding: 12px 5px;
+        font-size: 0.95rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
     }
 
     .section-padding {
