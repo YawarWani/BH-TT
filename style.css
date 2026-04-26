@@ -250,6 +250,8 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    width: 100%;
 }
 
 .logo {
@@ -274,6 +276,9 @@ img {
 
 
 .header-socials {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 15px;
     align-items: center;
@@ -341,6 +346,7 @@ img {
     flex-direction: column;
     gap: 6px;
     z-index: 1001;
+    flex-shrink: 0;
 }
 
 .menu-toggle .bar {
