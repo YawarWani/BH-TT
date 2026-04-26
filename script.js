@@ -640,6 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'hero_images/1.jpg',
             'hero_images/2.jpg',
             'hero_images/3.jpg',
+            'hero_images/4.jpg',
             'hero_images/4.jpg'
         ];
         
@@ -664,5 +665,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Change image every 4 seconds
         setInterval(rotateHeroBackground, 4000);
+    }
+
+    // --- 13. Smooth Sexy Reveal Animations ---
+    const revealElements = document.querySelectorAll('.scroll-anim');
+    
+    if (revealElements.length > 0) {
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+        
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
     }
 });

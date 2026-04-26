@@ -479,6 +479,78 @@ img {
     transform: translateY(-3px);
 }
 
+/* --- Premium 3D Animations --- */
+
+/* 1. 3D Globe Spin */
+@keyframes spinEarth3D {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+.hero-btns .fa-globe-asia {
+    display: inline-block;
+    animation: spinEarth3D 6s linear infinite;
+    transform-style: preserve-3d;
+    margin-right: 5px;
+}
+
+/* 2. 3D Phone Ring & Tilt */
+@keyframes ringPhone3D {
+    0%, 100% { transform: rotateZ(0deg) scale(1); }
+    10%, 30%, 50%, 70%, 90% { transform: rotateZ(-15deg) scale(1.1); }
+    20%, 40%, 60%, 80% { transform: rotateZ(15deg) scale(1.1); }
+}
+
+.hero-btns .fa-phone-alt {
+    display: inline-block;
+    animation: ringPhone3D 3s ease-in-out infinite;
+    transform-origin: center;
+    margin-left: 5px;
+}
+
+/* 3. Smooth Sweeping Shine (Glass Reflection) */
+@keyframes buttonShine {
+    0% { left: -100%; opacity: 0; }
+    20% { opacity: 1; }
+    40% { left: 200%; opacity: 0; }
+    100% { left: 200%; opacity: 0; }
+}
+
+.hero-btns .btn {
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.hero-btns .btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: buttonShine 5s infinite;
+    z-index: 1;
+}
+
+/* Stagger the reflections for dynamic feel */
+.hero-btns > .btn-primary::before { animation-delay: 0s; }
+.hero-sub-btns .btn-outline::before { animation-delay: 1.5s; }
+.hero-sub-btns .btn-primary::before { animation-delay: 3s; }
+
+/* 4. Trust Bar Icons 3D Float */
+@keyframes floatIcon3D {
+    0%, 100% { transform: translateY(0) scale(1) translateZ(0); }
+    50% { transform: translateY(-5px) scale(1.1) translateZ(20px); }
+}
+
+.trust-icon i {
+    animation: floatIcon3D 4s ease-in-out infinite;
+    display: inline-block;
+}
+.trust-item:nth-child(2) .trust-icon i { animation-delay: 1s; }
+.trust-item:nth-child(3) .trust-icon i { animation-delay: 2s; }
+
 /* ==========================================================================
    Trust Bar Section
    ========================================================================== */
@@ -1771,3 +1843,55 @@ img {
     color: #10B981;
     font-size: 0.85rem;
 }
+
+/* ==========================================================================
+   Smooth Sexy Transitions & Reveal Animations
+   ========================================================================== */
+
+/* Page Load Animation (Hero section) */
+.hero-content.fade-in-up {
+    animation: fadeInUpLoad 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+.hero-btns {
+    animation: fadeInUpLoad 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.hero-tagline {
+    animation: fadeInUpLoad 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+@keyframes fadeInUpLoad {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll Reveal Classes (IntersectionObserver) */
+.scroll-anim {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-anim.fade-in-up {
+    transform: translateY(60px);
+}
+
+.scroll-anim.fade-in-left {
+    transform: translateX(-60px);
+}
+
+.scroll-anim.fade-in-right {
+    transform: translateX(60px);
+}
+
+.scroll-anim.active {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Ensure no conflicts with delay styles already in HTML */
