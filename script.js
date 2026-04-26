@@ -79,11 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
                 backToTopBtn.classList.add('show');
-                if (waStickyBtn) waStickyBtn.classList.add('show');
             } else {
                 navbar.classList.remove('scrolled');
                 backToTopBtn.classList.remove('show');
-                if (waStickyBtn) waStickyBtn.classList.remove('show');
             }
         }
         
@@ -107,6 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     link.classList.add('active');
                 }
             });
+        }
+
+        // WhatsApp Sticky Button Visibility (hide on hero section)
+        if (waStickyBtn) {
+            if (current && current !== 'home') {
+                waStickyBtn.classList.add('show');
+            } else {
+                waStickyBtn.classList.remove('show');
+            }
         }
     });
 
