@@ -425,7 +425,7 @@ img {
 .hero-content {
     color: var(--white);
     max-width: 800px;
-    padding: 0 20px;
+    padding: 60px 20px 0 20px; /* Added top padding to push it away from navbar */
 }
 
 .hero-title {
